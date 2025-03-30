@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main walnut shape -->
+  <path d="M256 472C374.71 472 472 374.71 472 256C472 137.29 374.71 40 256 40C137.29 40 40 137.29 40 256C40 374.71 137.29 472 256 472Z" 
+        fill="#1E88E5" fill-opacity="0.1" stroke="#1E88E5" stroke-width="32"/>
+  
+  <!-- Cross symbol -->
+  <path d="M320 256H192M256 192V320" stroke="#1E88E5" stroke-width="32" stroke-linecap="round"/>
+  
+  <!-- Decorative elements -->
+  <path d="M256 96C176.471 96 112 160.471 112 240C112 319.529 176.471 384 256 384C335.529 384 400 319.529 400 240C400 160.471 335.529 96 256 96Z" 
+        stroke="#1E88E5" stroke-width="24" stroke-opacity="0.5"/>
+</svg> 

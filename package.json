@@ -1,0 +1,49 @@
+{
+  "name": "walnut-health",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Patient management system for healthcare providers",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tribe77-Tech/walnut-frontend.git"
+  },
+  "author": "Tribe77-Tech",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "vue-tsc -b",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.23",
+    "@heroicons/vue": "^2.2.0",
+    "@vueuse/core": "^13.0.0",
+    "@vueuse/head": "^2.0.0",
+    "@vueuse/motion": "^3.0.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.483.0",
+    "pinia": "^3.0.1",
+    "radix-vue": "^1.9.17",
+    "reka-ui": "^2.1.1",
+    "shadcn-vue": "^1.0.3",
+    "tailwind-merge": "^3.0.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.13",
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0",
+    "vue-tsc": "^2.2.4"
+  }
+}
