@@ -11,7 +11,6 @@ import {
     Bell,
     Search,
     ChevronDown,
-    X
 } from 'lucide-vue-next'
 
 // Import ShadCN components
@@ -30,9 +29,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 
 const route = useRoute()
-const isCollapsed = ref(false)
 const showMobileMenu = ref(false)
-const showNotifications = ref(false)
 
 const navigation = [
     {

@@ -8,6 +8,8 @@ const props = defineProps<{
     patient: Patient
 }>()
 
+const { patient } = props
+
 const emit = defineEmits<{
     back: []
 }>()

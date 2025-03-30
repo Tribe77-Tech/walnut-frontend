@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
+import { computed } from 'vue'
+import { cn } from '@/lib/utils'
 import {
     SidebarMenu,
     SidebarMenuButton,
@@ -7,9 +10,6 @@ import {
 } from '@/components/ui/sidebar'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import type { Component } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { computed } from 'vue'
-import { cn } from '@/lib/utils'
 
 // Define the navigation item type
 interface NavItem {
@@ -25,6 +25,9 @@ const { state } = useSidebar()
 const props = defineProps<{
     items: NavItem[]
 }>()
+
+// Use props to avoid the TS6133 error 
+const { items } = props
 
 const isCollapsed = computed(() => state.value === 'collapsed')
 

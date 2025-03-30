@@ -11,6 +11,9 @@ const props = defineProps<{
     hideHeader?: boolean
 }>()
 
+// Use props to avoid the TS6133 error
+const { patient, hideHeader } = props
+
 const getInitials = (name: string) => {
     return name
         .split(' ')
@@ -47,7 +50,7 @@ const formatDate = (dateString?: string) => {
                                 <div class="flex items-center mt-1 text-sm text-muted-foreground">
                                     <span v-if="patient.details?.age">{{ patient.details.age }} years old</span>
                                     <span v-if="patient.details?.gender" class="ml-2">{{ patient.details.gender
-                                    }}</span>
+                                        }}</span>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +93,7 @@ const formatDate = (dateString?: string) => {
                                         <div class="flex justify-between items-center">
                                             <h4 class="font-medium">{{ medication.name }}</h4>
                                             <span class="text-sm px-2 py-1 bg-primary/10 rounded">{{ medication.dosage
-                                            }}</span>
+                                                }}</span>
                                         </div>
                                         <p v-if="medication.frequency" class="text-sm text-muted-foreground mt-1">
                                             {{ medication.frequency }}

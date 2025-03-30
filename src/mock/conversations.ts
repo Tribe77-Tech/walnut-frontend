@@ -27,7 +27,7 @@ const getRandomRecentDate = () => {
 }
 
 // Generate mock conversations from our patient data
-export const conversations: Conversation[] = patients.map((patient, index) => {
+export const conversations: Conversation[] = patients.map((patient) => {
     const messages: Message[] = []
     const messageCount = Math.floor(Math.random() * 20) + 3 // 3-22 messages per conversation
 

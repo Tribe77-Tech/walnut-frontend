@@ -9,6 +9,8 @@ const props = defineProps<{
     isSelected: boolean
 }>()
 
+const { patient, isSelected } = props
+
 defineEmits<{
     select: [patient: Patient]
 }>()

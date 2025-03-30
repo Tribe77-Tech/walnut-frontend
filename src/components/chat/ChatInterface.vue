@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, nextTick, watch } from 'vue'
-import type { Conversation, Message } from '@/mock/conversations'
+import { ref, onMounted, nextTick, watch } from 'vue'
+import type { Conversation } from '@/mock/conversations'
 import type { Patient } from '@/types/patient'
 import ChatMessage from './ChatMessage.vue'
 import { Button } from '@/components/ui/button'

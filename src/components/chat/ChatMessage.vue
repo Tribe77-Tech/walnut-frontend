@@ -10,6 +10,9 @@ const props = defineProps<{
     senderName: string
 }>()
 
+// Use props to avoid the TS6133 error
+const { message, senderAvatar, senderName } = props
+
 const formatTime = (timestamp: string) => {
     const date = new Date(timestamp)
     return date.toLocaleTimeString(undefined, {

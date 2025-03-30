@@ -8,7 +8,6 @@ import {
     SidebarRail,
     useSidebar
 } from '@/components/ui/sidebar'
-import { cn } from '@/lib/utils'
 import NavMain from '@/components/layout/NavMain.vue'
 import HospitalSwitcher from './HospitalSwitcher.vue'
 import WalnutBranding from './WalnutBranding.vue'

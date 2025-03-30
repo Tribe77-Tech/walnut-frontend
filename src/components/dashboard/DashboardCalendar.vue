@@ -60,7 +60,9 @@ function nextMonth() {
     calendarDays.value = generateCalendarDays()
 }
 
-const isToday = (day: number) => {
+const isToday = (day: number | null) => {
+    if (day === null) return false
+
     const today = new Date()
     return day === today.getDate() &&
         currentMonth.value === today.getMonth() &&
