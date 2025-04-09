@@ -1,33 +1,22 @@
 <script setup lang="ts">
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from '@/components/ui/sidebar'
-import AppSidebar from '@/components/layout/AppSidebar.vue'
-import TopBar from '@/components/layout/TopBar.vue'
+import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
+import AuthLayout from '@/layouts/AuthLayout.vue'
 
-// The sidebar state is now handled by the sidebar components
-// No need for custom state tracking
+const route = useRoute()
+const authStore = useAuthStore()
+
+onMounted(() => {
+  authStore.initAuth()
+})
 </script>
 
 <template>
-  <SidebarProvider>
-    <AppSidebar />
-    <SidebarInset>
-      <TopBar />
-      <main class="flex-1 overflow-auto p-6 pt-20 bg-muted">
-        <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
-          <RouterView />
-        </div>
-      </main>
-    </SidebarInset>
-
-    <!-- Mobile Sidebar Toggle Button - Using SidebarTrigger component -->
-    <div class="fixed bottom-4 right-4 md:hidden z-50">
-      <SidebarTrigger class="sidebar-toggle-btn-mobile" />
-    </div>
-  </SidebarProvider>
+  <AuthLayout v-if="route.meta.requiresAuth">
+    <RouterView />
+  </AuthLayout>
+  <RouterView v-else />
 </template>
 
 <style>
