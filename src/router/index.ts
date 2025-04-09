@@ -49,7 +49,7 @@ const router = createRouter({
 })
 
 // Navigation guard to check authentication
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
     // Check authentication status (using localStorage for this example)
     const isAuthenticated = localStorage.getItem('user') !== null;
 
