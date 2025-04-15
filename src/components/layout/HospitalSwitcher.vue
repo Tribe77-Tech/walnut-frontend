@@ -2,22 +2,9 @@
 import { ref, computed } from 'vue'
 import { Check, ChevronsUpDown, Hospital, Plus } from 'lucide-vue-next'
 import { cn } from '@/lib/utils'
+import { hospitals,selectHospital,selectedHospital } from '@/mock/hospitals'
 
-import {
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    useSidebar,
-} from '@/components/ui/sidebar'
 
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 
 import {
     Dialog,
@@ -29,85 +16,39 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog'
 
-interface Hospital {
-    label: string
-    value: string
-}
 
-const hospitals = [
-    {
-        label: "Spandan Nagpur",
-        value: "spandan-nagpur"
-    },
-    {
-        label: "Jupiter Thane",
-        value: "jupiter-thane"
-    }
-]
 
-const { state, isMobile } = useSidebar()
-const isCollapsed = computed(() => state.value === 'collapsed')
-const selectedHospital = ref(hospitals[0])
-const open = ref(false)
 const showNewHospitalDialog = ref(false)
 const newHospitalName = ref('')
 
-function selectHospital(hospital: Hospital) {
-    selectedHospital.value = hospital
-    open.value = false
-}
+
 </script>
 
 <template>
     <Dialog v-model:open="showNewHospitalDialog">
-        <SidebarMenu>
-            <SidebarMenuItem>
-                <DropdownMenu v-model:open="open">
-                    <DropdownMenuTrigger as-child>
-                        <SidebarMenuButton size="lg"
-                            class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
-                            <div
-                                class="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary/10 text-primary ring-1 ring-primary/20">
-                                <Hospital class="size-4" />
-                            </div>
-                            <div v-if="!isCollapsed" class="grid flex-1 text-left text-sm leading-tight">
-                                <span class="truncate font-semibold">
-                                    {{ selectedHospital.label }}
-                                </span>
-                            </div>
-                            <ChevronsUpDown v-if="!isCollapsed" class="ml-auto" />
-                        </SidebarMenuButton>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent class="w-[--reka-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-                        align="start" :side="isMobile ? 'bottom' : 'right'" :side-offset="4">
-                        <DropdownMenuLabel class="text-xs text-muted-foreground">
-                            Hospitals
-                        </DropdownMenuLabel>
-                        <DropdownMenuItem v-for="hospital in hospitals" :key="hospital.value" class="gap-2 p-2"
-                            @click="selectHospital(hospital)">
-                            <Check :class="cn(
-                                'mr-2 h-4 w-4',
-                                selectedHospital.value === hospital.value
-                                    ? 'opacity-100'
-                                    : 'opacity-0'
-                            )" />
-                            {{ hospital.label }}
-                        </DropdownMenuItem>
-                        <DropdownMenuSeparator />
-                        <DialogTrigger as-child>
-                            <DropdownMenuItem class="gap-2 p-2">
-                                <div class="flex size-6 items-center justify-center rounded-md border bg-background">
-                                    <Plus class="size-4" />
-                                </div>
-                                <div class="font-medium text-muted-foreground">
-                                    Add Hospital
-                                </div>
-                            </DropdownMenuItem>
-                        </DialogTrigger>
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            </SidebarMenuItem>
-        </SidebarMenu>
+        <div class="space-y-1 py-1">
+      <div v-for="hospital in hospitals" :key="hospital.value"
+           class="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-accent"
+           @click="selectHospital(hospital)">
+        <div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-primary/20">
+          <Hospital class="h-4 w-4" />
+        </div>
+        <div class="grid flex-1">
+          <span class="text-sm font-medium leading-none">{{ hospital.label }}</span>
+        </div>
+        <Check v-if="selectedHospital.value === hospital.value" class="h-4 w-4" />
+      </div>
+      
+      <DialogTrigger as-child>
+        <div class="flex cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-accent">
+          <div class="flex h-8 w-8 items-center justify-center rounded-full bg-muted">
+            <Plus class="h-4 w-4" />
+          </div>
+          <span class="text-sm font-medium text-muted-foreground">Add Hospital</span>
+        </div>
+      </DialogTrigger>
+    </div>
+
 
         <DialogContent>
             <DialogHeader>

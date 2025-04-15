@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { LogOut, Settings, User } from 'lucide-vue-next'
+import HospitalSwitcher from './HospitalSwitcher.vue'
 
 const open = ref(false)
 
@@ -29,6 +30,10 @@ const user = {
                     </p>
                 </div>
             </div>
+            <div class="mt-2 border-t pt-2">
+        <p class="px-2 text-xs font-medium text-muted-foreground">Hospitals</p>
+        <HospitalSwitcher />
+      </div>
             <div class="mt-2 border-t">
                 <button
                     class="relative flex w-full cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-accent hover:text-accent-foreground">

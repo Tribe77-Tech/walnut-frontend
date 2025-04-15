@@ -14,6 +14,7 @@ import WalnutBranding from './WalnutBranding.vue'
 import SettingsMenu from './SettingsMenu.vue'
 import { mainNavItems } from '@/config/navigation'
 import { computed } from 'vue'
+import SidebarHospitalDisplay from './SidebarHospitalDisplay.vue'
 
 const props = withDefaults(defineProps<SidebarProps>(), {
     collapsible: 'icon',
@@ -27,8 +28,8 @@ const isCollapsed = computed(() => state.value === 'collapsed')
     <Sidebar v-bind="props" class="sidebar-container">
         <SidebarHeader>
             <WalnutBranding />
-            <div class="py-4">
-                <HospitalSwitcher />
+            <div class="py-4" v-if="!isCollapsed">
+                <SidebarHospitalDisplay />
             </div>
         </SidebarHeader>
 
